@@ -1,0 +1,151 @@
+.pageContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+.mainContent {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
+}
+.searchSection {
+  margin-bottom: 24px;
+  width: 100%;
+}
+.searchContainer {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+.searchInputWrapper {
+  flex: 1;
+  position: relative;
+  min-width: 0; /* Allow flex item to shrink below content size */
+}
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+.searchInput {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.searchInput:focus {
+  border-color: #2563eb;
+}
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 16px;
+  margin-left: 40px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.filterButton:hover {
+  background-color: #f3f4f6;
+}
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 0;
+  width: 100%;
+}
+.categoryPill {
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0; /* Prevent pills from shrinking */
+}
+.categoryPill:hover {
+  background-color: #f3f4f6;
+}
+.categoryPill.active {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+.resultsInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #4b5563;
+  font-size: 0.875rem;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  gap: 8px;
+}
+.select {
+  padding: 6px 24px 6px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background-color: white;
+  color: #4b5563;
+  font-size: 0.875rem;
+  cursor: pointer;
+  outline: none;
+  max-width: 100%; /* Prevent select from overflowing */
+}
+.itemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 20px 14px;
+  }
+  .searchContainer {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .filterButton {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    margin-left: 0; /* Remove margin on mobile */
+  }
+  .itemsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+}
+
+/* Additional mobile optimization */
+@media (max-width: 480px) {
+  .itemsGrid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+}

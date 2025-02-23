@@ -1,15 +1,71 @@
 .container {
   display: flex;
-  justify-content: space-between; /* This creates maximum space between left and right sections */
+  justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbarBrand img {
+  height: 40px;
+}
+.marketplaceLink {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+.marketplaceLink:hover {
+  color: #007bff;
+}
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+}
+.sellButton {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+.sellButton:hover {
+  background-color: #218838;
+}
+.languageSelect {
+  padding: 5px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 .profileDropdown {
   position: relative;
 }
-
 .profileIcon {
   background: none;
   border: none;
@@ -22,114 +78,13 @@
   border-radius: 50%;
   transition: background-color 0.2s;
 }
-
 .profileIcon:hover {
   background-color: #f0f0f0;
 }
-
-.leftSection {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.leftSection img {
-  height: 40px;
-}
-
-.navbarBrand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-
-.rightSection {
-  display: flex;
-  align-items: center;
-  gap: 15px; /* This controls the spacing between the right side elements */
-}
-
-.navbarBrand {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-
-.navbarBrand img {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.navbarMenu {
-  display: flex;
-  align-items: center;
-}
-
-.navbarMenu ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbarMenu ul li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.navbarMenu ul li a:hover {
-  color: #007bff;
-}
-
-.navbarActions {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.sellButton {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.sellButton:hover {
-  background-color: #218838;
-}
-
-.languageSelect {
-  padding: 5px;
-  font-size: 1rem;
-}
-
-.profileDropdown {
-  position: relative;
-}
-
-.profileButton {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 .dropdownMenu {
   position: absolute;
   right: 0;
-  top: 40px;
+  top: 100%;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -137,15 +92,115 @@
   min-width: 120px;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 }
-
 .dropdownMenu a {
   text-decoration: none;
   color: #333;
-  padding: 5px 10px;
+  padding: 8px 12px;
   transition: background 0.3s;
 }
-
 .dropdownMenu a:hover {
   background-color: #f8f9fa;
+}
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #333;
+}
+.mobileMenu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 10px 15px;
+  }
+  .navbarBrand span {
+    font-size: 1.2rem;
+  }
+  .navbarBrand img {
+    height: 32px;
+  }
+  .rightSection {
+    gap: 8px;
+    flex-shrink: 0; /* Prevent right section from shrinking */
+  }
+  .mobileMenuButton {
+    display: flex;
+    align-items: center;
+  }
+  .mobileMenu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 160px;
+    z-index: 1000;
+  }
+  .mobileMenu.active {
+    display: flex;
+    flex-direction: column;
+  }
+  .mobileMenuItem {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    transition: background 0.3s;
+    border-bottom: 1px solid #eee;
+  }
+  .mobileMenuItem:last-child {
+    border-bottom: none;
+  }
+  .mobileMenuItem:hover {
+    background-color: #f8f9fa;
+  }
+  /* Adjust spacing for single row */
+  .leftSection {
+    gap: 12px;
+    flex-shrink: 1; /* Allow left section to shrink if needed */
+    min-width: 0; /* Enable text truncation */
+  }
+  /* Make language select more compact */
+  .languageSelect {
+    padding: 4px;
+    font-size: 0.9rem;
+    max-width: 60px; /* Limit width of language selector */
+  }
+  /* Ensure buttons stay in line */
+  .sellButton {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px 10px;
+  }
+  .leftSection {
+    gap: 8px;
+  }
+  .navbarBrand img {
+    height: 28px;
+  }
+  .navbarBrand span {
+    font-size: 1.1rem;
+  }
+  /* Further compact the right section */
+  .rightSection {
+    gap: 6px;
+  }
+  /* Make language select even more compact */
+  .languageSelect {
+    max-width: 50px;
+    padding: 2px;
+  }
 }
